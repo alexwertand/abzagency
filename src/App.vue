@@ -1,5 +1,7 @@
 <template>
-	<h1>abz agency 1</h1>
+	<h1 class="flex flex-row h-screen antialiased text-gray-800">abz agency 1</h1>
+
+	<div class="red">fffff</div>
 </template>
 
 <script>
@@ -15,6 +17,7 @@
 		width: 100%;
 		text-align: center;
 		margin-top: 10px;
+		color: blue;
 	}
 
 	img {
