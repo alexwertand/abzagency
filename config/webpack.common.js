@@ -1,23 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const __base = path.resolve(__dirname, '..');
 const __src = path.resolve(__base, 'src');
 
 module.exports = {
     entry: path.resolve(__src, 'main.js'),
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__base, 'dist'),
-        clean: true
-    },
     plugins: [
+        new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             title: 'abz agency',
-            template: path.resolve(__base, '/public/index.html'),
+            template: path.resolve(__base, 'public/index.html'),
         }),
-        new VueLoaderPlugin()
+        new MiniCssExtractPlugin(),
     ],
     module: {
         rules: [
@@ -30,6 +27,12 @@ module.exports = {
                 use: [
                     "style-loader",
                     {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: false,
+                        },
+                    },
+                    {
                         loader: 'css-loader',
                         options: {
                             // 0 => no loaders (default);
@@ -38,7 +41,7 @@ module.exports = {
                             importLoaders: 1
                         }
                     },
-                    'postcss-loader'
+                    'postcss-loader',
                 ]
             },
             {

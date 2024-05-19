@@ -1,7 +1,7 @@
 <template>
 	<h1 class="flex flex-row h-screen antialiased text-gray-800">abz agency 1</h1>
 
-	<div class="red">fffff</div>
+	<div class="bg-black">fffff</div>
 </template>
 
 <script>
